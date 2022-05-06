@@ -7,10 +7,11 @@ import 'package:movie_app/domain/home/now_playing_response.dart';
 // import 'package:movie_app/domain/home/upcoming_response.dart';
 // import 'package:movie_app/domain/home/upcoming_response.dart';
 import 'package:movie_app/presentation/movie_detail/now_playing_detail.dart';
+import 'package:movie_app/utils/constant.dart';
 // import 'package:movie_app/widget/loading.dart';
 
 Container NowPlaying(BuildContext context, List<Results> _dataResult) {
-  final uriImage = "https://image.tmdb.org/t/p/w500";
+  // final uriImage = "https://image.tmdb.org/t/p/w500";
   // final uriImageSmall = "https://image.tmdb.org/t/p/w154/";
   return Container(
     // color: Colors.black
@@ -42,7 +43,7 @@ Container NowPlaying(BuildContext context, List<Results> _dataResult) {
                 image: DecorationImage(
                     image:
                         // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
-                        NetworkImage(uriImage + _dataResult[index].posterPath!),
+                        NetworkImage(Constant.uriImage500 + _dataResult[index].posterPath!),
                     fit: BoxFit.cover,
                     filterQuality: FilterQuality.medium,
                     scale: 1.0),

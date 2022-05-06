@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/domain/home/now_playing_detail_response.dart';
+import 'package:movie_app/utils/constant.dart';
 import 'package:movie_app/widget/app_bar_container.dart';
 import 'package:readmore/readmore.dart';
 
 Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
     BuildContext context) {
-  final uriImage = "https://image.tmdb.org/t/p/w500";
+  // final uriImage = "https://image.tmdb.org/t/p/w500";
   // bool _pinned = true;
   // bool _snap = false;
   // bool _floating = false;
   final resultPopularity = _data.popularity! / 100;
-  print(uriImage + _data.backdropPath!);
+  print(Constant.uriImage500 + _data.backdropPath!);
   return Scaffold(
     appBar: AppBar(
       title: AppBarContainer(),
@@ -38,7 +39,7 @@ Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: NetworkImage(uriImage + _data.posterPath!),
+                  image: NetworkImage(Constant.uriImage500 + _data.posterPath!),
                   fit: BoxFit.cover,
                 ),
               ),

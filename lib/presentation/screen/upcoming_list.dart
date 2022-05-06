@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_app/domain/home/upcoming_response.dart';
 import 'package:movie_app/presentation/movie_detail/now_playing_detail.dart';
+import 'package:movie_app/utils/constant.dart';
 
 Container UpcomingList(
     BuildContext context, List<ResultsUpcoming> _dataResult) {
-  final uriImage = "https://image.tmdb.org/t/p/w500";
+  // final uriImage = "https://image.tmdb.org/t/p/w500";
   return Container(
     height: MediaQuery.of(context).size.height * 0.4,
     width: double.infinity,
@@ -36,7 +37,8 @@ Container UpcomingList(
                 image: DecorationImage(
                     image:
                         // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
-                        NetworkImage(uriImage + _dataResult[index].posterPath!),
+                        NetworkImage(Constant.uriImage500 +
+                            _dataResult[index].posterPath!),
                     fit: BoxFit.cover,
                     filterQuality: FilterQuality.medium,
                     scale: 1.0),

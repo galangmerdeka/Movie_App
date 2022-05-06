@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:movie_app/application/search/cubit/search_cubit.dart';
 import 'package:movie_app/domain/home/movie_search_response.dart';
 import 'package:movie_app/presentation/movie_detail/now_playing_detail.dart';
+import 'package:movie_app/utils/constant.dart';
 import 'package:movie_app/widget/loading.dart';
 
 class SearchMovieResult extends StatefulWidget {
@@ -59,7 +60,7 @@ class _SearchMovieResultState extends State<SearchMovieResult> {
 
 Scaffold SearchResult(BuildContext context,
     List<ResultsSearch> _dataSearchResult, String keyword) {
-  final uriImage = "https://image.tmdb.org/t/p/w300";
+  // final uriImage = "https://image.tmdb.org/t/p/w300";
   return Scaffold(
     backgroundColor: Theme.of(context).colorScheme.background,
     appBar: AppBar(
@@ -135,7 +136,7 @@ Scaffold SearchResult(BuildContext context,
                                           image:
                                               // CachedNetworkImage(imageUrl: uriImage+_dataSearchResult[index].posterPath!, progressIndicatorBuilder: ,),
                                               NetworkImage(
-                                            uriImage +
+                                            Constant.uriImage300 +
                                                 _dataSearchResult[index]
                                                     .posterPath!,
                                           ),
