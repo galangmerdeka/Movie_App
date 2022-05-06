@@ -2,9 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 // import 'package:flutter/material.dart';
 import 'package:movie_app/domain/home/movie_search_response.dart';
+import 'package:movie_app/utils/constant.dart';
 
 class MovieSearchRepository {
-  static var uri = "https://api.themoviedb.org/3/search/movie?";
+  // static var uri = "https://api.themoviedb.org/3/search/movie?";
 
   final Dio _dio = Dio();
 
@@ -13,7 +14,8 @@ class MovieSearchRepository {
     Response _response;
     print("enter to hit api search movie by ${keyword} keyword");
     try {
-      _response = await _dio.get(uri, queryParameters: {
+      _response = await _dio
+          .get(Constant.baseUrlMovieDB + "search/movie?", queryParameters: {
         'api_key': 'c87bf1c2b8e947dc8751367b5fd8affb',
         'language': 'en-US',
         'query': keyword,
