@@ -6,6 +6,7 @@ import 'package:movie_app/application/upcoming/cubit/upcoming_cubit.dart';
 import 'package:movie_app/presentation/hbo_main_page.dart';
 import 'package:movie_app/presentation/search_movie/search_movie.dart';
 import 'package:movie_app/widget/app_bar_container.dart';
+import 'package:movie_app/widget/drawer_content.dart';
 
 class TabularPage extends StatefulWidget {
   const TabularPage({Key? key}) : super(key: key);
@@ -77,6 +78,8 @@ class _TabularPageState extends State<TabularPage> {
           return Scaffold(
             drawer: Drawer(
               backgroundColor: Theme.of(context).colorScheme.background,
+              child: DrawerContent(),
+              elevation: 2.0,
             ),
             appBar: AppBar(
               title: AppBarContainer(),
@@ -116,3 +119,5 @@ class _TabularPageState extends State<TabularPage> {
     );
   }
 }
+
+

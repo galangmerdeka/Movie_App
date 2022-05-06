@@ -22,7 +22,7 @@ class MovieRepository {
         // "https://api.themoviedb.org/3/movie/$movie_id?",
         Constant.baseUrlMovieDB+"movie/${movie_id}?",
         queryParameters: {
-          'api_key': 'c87bf1c2b8e947dc8751367b5fd8affb',
+          'api_key': Constant.apiKey,
           'language': 'en-US'
         },
       );
@@ -66,7 +66,7 @@ class MovieRepository {
       _response = await _dio.get(
         Constant.baseUrlMovieDB+"movie/now_playing?",
         queryParameters: {
-          'api_key': 'c87bf1c2b8e947dc8751367b5fd8affb',
+          'api_key': Constant.apiKey,
           'page': 1
         },
       );
@@ -112,7 +112,7 @@ class MovieRepository {
       _response = await _dio.get(
         "https://api.themoviedb.org/3/movie/upcoming?",
         queryParameters: {
-          'api_key': 'c87bf1c2b8e947dc8751367b5fd8affb',
+          'api_key': Constant.apiKey,
           'page': 1
         },
       );

@@ -5,6 +5,7 @@ import 'package:movie_app/presentation/first_landing.dart';
 // import 'package:movie_app/presentation/landing_page.dart';
 import 'package:movie_app/presentation/hbo_main_page.dart';
 import 'package:movie_app/presentation/movie_detail/now_playing_detail.dart';
+import 'package:movie_app/presentation/settings/playback_options.dart';
 import 'package:movie_app/presentation/user/sign_page.dart';
 import 'package:movie_app/presentation/user/sign_up_page.dart';
 
@@ -72,6 +73,7 @@ class AppWidget extends StatelessWidget {
         SignInPage.routName: (ctx) => SignInPage(),
         HboMainPage.routName: (ctx) => HboMainPage(),
         SignUpPage.routeName: (ctx) => SignUpPage(),
+        PlaybackOptions.routeName: (ctx) => PlaybackOptions(),
       },
     );
   }

@@ -16,7 +16,7 @@ class MovieSearchRepository {
     try {
       _response = await _dio
           .get(Constant.baseUrlMovieDB + "search/movie?", queryParameters: {
-        'api_key': 'c87bf1c2b8e947dc8751367b5fd8affb',
+        'api_key': Constant.apiKey,
         'language': 'en-US',
         'query': keyword,
         'include_adult': false,
