@@ -90,7 +90,7 @@ class _TabularPageState extends State<TabularPage> {
               backgroundColor: Theme.of(context).colorScheme.background,
               child: DrawerContent(
                 dataUser: (firebaseUser != null)
-                    ? firebaseUser!.email.toString()
+                    ? firebaseUser.email.toString()
                     : "User",
               ),
               elevation: 2.0,

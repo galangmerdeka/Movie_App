@@ -20,11 +20,8 @@ class MovieRepository {
       // );
       _response = await _dio.get(
         // "https://api.themoviedb.org/3/movie/$movie_id?",
-        Constant.baseUrlMovieDB+"movie/${movie_id}?",
-        queryParameters: {
-          'api_key': Constant.apiKey,
-          'language': 'en-US'
-        },
+        Constant.baseUrlMovieDB + "movie/${movie_id}?",
+        queryParameters: {'api_key': Constant.apiKey, 'language': 'en-US'},
       );
       NowPlayingDetailResponse _movieDetailUpcoming =
           NowPlayingDetailResponse.fromJson(_response.data);
@@ -64,11 +61,8 @@ class MovieRepository {
       //   path: uri,
       // );
       _response = await _dio.get(
-        Constant.baseUrlMovieDB+"movie/now_playing?",
-        queryParameters: {
-          'api_key': Constant.apiKey,
-          'page': 1
-        },
+        Constant.baseUrlMovieDB + "movie/now_playing?",
+        queryParameters: {'api_key': Constant.apiKey, 'page': 1},
       );
       // final _result = _response.data;
       // List _movieListUpcoming = List.fromJson(_result);
@@ -111,10 +105,7 @@ class MovieRepository {
       // );
       _response = await _dio.get(
         "https://api.themoviedb.org/3/movie/upcoming?",
-        queryParameters: {
-          'api_key': Constant.apiKey,
-          'page': 1
-        },
+        queryParameters: {'api_key': Constant.apiKey, 'page': 1},
       );
       // final _result = _response.data;
       // List _movieListUpcoming = List.fromJson(_result);
