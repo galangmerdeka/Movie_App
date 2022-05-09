@@ -7,7 +7,7 @@ import 'package:movie_app/application/now_playing/cubit/home_cubit.dart';
 import 'package:movie_app/application/upcoming/cubit/upcoming_cubit.dart';
 import 'package:movie_app/presentation/screen/now_playing.dart';
 import 'package:movie_app/presentation/screen/upcoming_list.dart';
-import 'package:movie_app/widget/app_bar_container.dart';
+// import 'package:movie_app/widget/app_bar_container.dart';
 // import 'package:movie_app/widget/loading.dart';
 
 class HboMainPage extends StatefulWidget {

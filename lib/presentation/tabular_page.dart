@@ -1,21 +1,29 @@
+import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:movie_app/application/now_playing/cubit/home_cubit.dart';
-import 'package:movie_app/application/search/cubit/search_cubit.dart';
+// import 'package:movie_app/application/search/cubit/search_cubit.dart';
 import 'package:movie_app/application/upcoming/cubit/upcoming_cubit.dart';
 import 'package:movie_app/presentation/hbo_main_page.dart';
 import 'package:movie_app/presentation/search_movie/search_movie.dart';
+// import 'package:movie_app/presentation/user/sign_page.dart';
 import 'package:movie_app/widget/app_bar_container.dart';
 import 'package:movie_app/widget/drawer_content.dart';
+import 'package:provider/provider.dart';
 
 class TabularPage extends StatefulWidget {
-  const TabularPage({Key? key}) : super(key: key);
+  const TabularPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<TabularPage> createState() => _TabularPageState();
 }
 
 class _TabularPageState extends State<TabularPage> {
+  // final User firebaseUser = User;
   final List<Map<String, dynamic>> _tabPages = [
     {
       'page': HboMainPage(),
@@ -64,6 +72,7 @@ class _TabularPageState extends State<TabularPage> {
 
   @override
   Widget build(BuildContext context) {
+    // User firebaseUser = Provider.of<User>();
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -75,10 +84,15 @@ class _TabularPageState extends State<TabularPage> {
       ],
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (_, state) {
+          User? firebaseUser = Provider.of<User?>(context);
           return Scaffold(
             drawer: Drawer(
               backgroundColor: Theme.of(context).colorScheme.background,
-              child: DrawerContent(),
+              child: DrawerContent(
+                dataUser: (firebaseUser != null)
+                    ? firebaseUser!.email.toString()
+                    : "User",
+              ),
               elevation: 2.0,
             ),
             appBar: AppBar(
@@ -119,5 +133,3 @@ class _TabularPageState extends State<TabularPage> {
     );
   }
 }
-
-

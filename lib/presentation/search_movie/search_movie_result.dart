@@ -86,6 +86,7 @@ Scaffold SearchResult(BuildContext context,
             SizedBox(
               height: 20,
             ),
+            // ignore: unnecessary_null_comparison
             (_dataSearchResult == null || _dataSearchResult == '')
                 ? Container(
                     child: Text(
