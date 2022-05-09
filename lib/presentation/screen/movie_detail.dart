@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/domain/home/now_playing_detail_response.dart';
 import 'package:movie_app/utils/constant.dart';
 import 'package:movie_app/widget/app_bar_container.dart';
+import 'package:movie_app/widget/modal_share_option.dart';
 import 'package:readmore/readmore.dart';
 
 Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
@@ -20,7 +21,13 @@ Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
         Container(
           child: IconButton(
             icon: Icon(Icons.share_sharp),
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (ctx) => ModalShareButton(context),
+              );
+              print("Button share clicked");
+            },
           ),
         ),
       ],

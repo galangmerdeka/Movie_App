@@ -15,6 +15,20 @@ class SearchMovie extends StatefulWidget {
 
 class _SearchMovieState extends State<SearchMovie> {
   final _keywordInput = new TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _keywordInput.addListener(() {
+      setState(() {});
+    });
+  }
+
+  void clearTypeSearch() {
+    _keywordInput.clear();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,28 +39,25 @@ class _SearchMovieState extends State<SearchMovie> {
         children: [
           TextFormField(
             controller: _keywordInput,
+            textInputAction: TextInputAction.search,
+            onFieldSubmitted: (String msg) {
+              Get.to(
+                SearchMovieResult(),
+                arguments: _keywordInput.text,
+              );
+            },
             decoration: InputDecoration(
-              enabledBorder:
-                  Theme.of(context).inputDecorationTheme.enabledBorder,
-              hintStyle: Theme.of(context).textTheme.displaySmall,
-              hintText: "Search Movies",
-              suffixIcon: IconButton(
-                color: Theme.of(context).iconTheme.color,
-                onPressed: () {
-                  // print(_keywordInput.text);
-                  Get.to(
-                    SearchMovieResult(),
-                    arguments: _keywordInput.text,
-                  );
-                  // BlocProvider(
-                  //     create: (context) => SearchCubit()
-                  //       ..getMovieSearchByKeyword(_keywordinput));
-                },
-                icon: Icon(
-                  Icons.search_sharp,
-                ),
-              ),
-            ),
+                enabledBorder:
+                    Theme.of(context).inputDecorationTheme.enabledBorder,
+                hintStyle: Theme.of(context).textTheme.displaySmall,
+                hintText: "Search Movies",
+                suffixIcon: _keywordInput.text.isNotEmpty
+                    ? IconButton(
+                        onPressed: () => clearTypeSearch(),
+                        icon: Icon(Icons.close),
+                        color: Theme.of(context).iconTheme.color,
+                      )
+                    : Container()),
           ),
           SizedBox(
             height: 20,
