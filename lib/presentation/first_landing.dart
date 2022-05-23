@@ -57,7 +57,7 @@ class FirstLanding extends StatelessWidget {
                           shape: BoxShape.rectangle,
                           borderRadius: BorderRadius.circular(12),
                           image: const DecorationImage(
-                            image: AssetImage("assets/image/pngwing.png"),
+                            image: AssetImage("assets/image/CINEMA.jpg"),
                             fit: BoxFit.contain,
                           ),
                         ),

@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:movie_app/domain/home/now_playing_detail_response.dart';
 // import 'package:movie_app/domain/home/now_playing_detail_response.dart';
 import 'package:movie_app/domain/home/now_playing_response.dart';
+import 'package:movie_app/domain/home/popular_response.dart';
 import 'package:movie_app/domain/home/upcoming_response.dart';
 import 'package:movie_app/utils/constant.dart';
 
@@ -69,6 +70,49 @@ class MovieRepository {
       NowPlayingResponse _movieListNowPlaying =
           NowPlayingResponse.fromJson(_response.data);
       return right(_movieListNowPlaying);
+    } on DioError catch (e) {
+      String? errMessage = e.response?.data.toString();
+      switch (e.type) {
+        case DioErrorType.connectTimeout:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.sendTimeout:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.receiveTimeout:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.response:
+          // TODO: Handle this case.
+          errMessage = e.response?.data['status_message'];
+          break;
+        case DioErrorType.cancel:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.other:
+          // TODO: Handle this case.
+          break;
+      }
+      return left(errMessage!);
+    }
+  }
+
+  Future<Either<String, PopularResponse>> getListMoviePopular() async {
+    Response _response;
+    print("enter to hit API Popular");
+    try {
+      // RequestOptions? options = RequestOptions(
+      //   path: uri,
+      // );
+      _response = await _dio.get(
+        Constant.baseUrlMovieDB + "movie/popular?",
+        queryParameters: {'api_key': Constant.apiKey, 'page': 1},
+      );
+      // final _result = _response.data;
+      // List _movieListUpcoming = List.fromJson(_result);
+      PopularResponse _popularResponse =
+          PopularResponse.fromJson(_response.data);
+      return right(_popularResponse);
     } on DioError catch (e) {
       String? errMessage = e.response?.data.toString();
       switch (e.type) {

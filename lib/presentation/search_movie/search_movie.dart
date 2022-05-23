@@ -47,17 +47,22 @@ class _SearchMovieState extends State<SearchMovie> {
               );
             },
             decoration: InputDecoration(
-                enabledBorder:
-                    Theme.of(context).inputDecorationTheme.enabledBorder,
-                hintStyle: Theme.of(context).textTheme.displaySmall,
-                hintText: "Search Movies",
-                suffixIcon: _keywordInput.text.isNotEmpty
-                    ? IconButton(
-                        onPressed: () => clearTypeSearch(),
-                        icon: Icon(Icons.close),
-                        color: Theme.of(context).iconTheme.color,
-                      )
-                    : Container()),
+              enabledBorder:
+                  Theme.of(context).inputDecorationTheme.enabledBorder,
+              hintStyle: Theme.of(context).textTheme.displaySmall,
+              hintText: "Search Movies",
+              prefixIcon: Icon(
+                Icons.search_outlined,
+                color: Theme.of(context).iconTheme.color,
+              ),
+              suffixIcon: _keywordInput.text.isNotEmpty
+                  ? IconButton(
+                      onPressed: () => clearTypeSearch(),
+                      icon: Icon(Icons.close),
+                      color: Theme.of(context).iconTheme.color,
+                    )
+                  : null,
+            ),
           ),
           SizedBox(
             height: 20,

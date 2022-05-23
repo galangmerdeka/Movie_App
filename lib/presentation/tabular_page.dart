@@ -76,6 +76,9 @@ class _TabularPageState extends State<TabularPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => HomeCubit()..getMoviePopular(),
+        ),
+        BlocProvider(
           create: (context) => HomeCubit()..getMovieNowPlaying(),
         ),
         BlocProvider(

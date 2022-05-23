@@ -10,8 +10,11 @@ class HomeLoading extends HomeState {}
 class HomeNowPlaying extends HomeState {
   final NowPlayingResponse dataMovieNowPlaying;
   HomeNowPlaying(this.dataMovieNowPlaying);
-  // final List dataMovieUpcoming;
-  // HomeUpcomingSuccess(this.dataMovieUpcoming);
+}
+
+class HomePopular extends HomeState {
+  final PopularResponse dataMoviePopular;
+  HomePopular(this.dataMoviePopular);
 }
 
 class HomeUpcomingError extends HomeState {
@@ -23,4 +26,3 @@ class HomeNowPlayingMovieDetail extends HomeState {
   final NowPlayingDetailResponse dataMovieNowPlayingDetail;
   HomeNowPlayingMovieDetail(this.dataMovieNowPlayingDetail);
 }
-

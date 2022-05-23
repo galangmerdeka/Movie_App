@@ -8,7 +8,8 @@ Container UpcomingList(
     BuildContext context, List<ResultsUpcoming> _dataResult) {
   // final uriImage = "https://image.tmdb.org/t/p/w500";
   return Container(
-    height: MediaQuery.of(context).size.height * 0.4,
+    // height: MediaQuery.of(context).size.height * 0.4,
+    height: 200,
     width: double.infinity,
     padding: EdgeInsets.only(
       bottom: 10,
@@ -20,7 +21,7 @@ Container UpcomingList(
       // horizontal, this produces 2 rows.
       crossAxisCount: 1,
       scrollDirection: Axis.horizontal,
-      mainAxisSpacing: 50,
+      mainAxisSpacing: 10,
       // Generate 100 widgets that display their index in the List.
       children: List.generate(
         _dataResult.length,
@@ -32,8 +33,8 @@ Container UpcomingList(
             },
             child: Container(
               decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12),
+                // shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
                     image:
                         // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
@@ -43,8 +44,8 @@ Container UpcomingList(
                     filterQuality: FilterQuality.medium,
                     scale: 1.0),
               ),
-              width: 250,
-              height: 600,
+              // width: 250,
+              // height: 600,
             ),
           );
         },

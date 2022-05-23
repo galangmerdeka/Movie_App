@@ -15,8 +15,10 @@ Container NowPlaying(BuildContext context, List<Results> _dataResult) {
   // final uriImageSmall = "https://image.tmdb.org/t/p/w154/";
   return Container(
     // color: Colors.black
-    height: MediaQuery.of(context).size.height * 0.4,
+    // height: MediaQuery.of(context).size.height * 0.2,
+    height: 200,
     width: double.infinity,
+    // width: 100,
     padding: EdgeInsets.only(
       bottom: 10,
       top: 10,
@@ -26,7 +28,7 @@ Container NowPlaying(BuildContext context, List<Results> _dataResult) {
       // horizontal, this produces 2 rows.
       crossAxisCount: 1,
       scrollDirection: Axis.horizontal,
-      mainAxisSpacing: 50,
+      mainAxisSpacing: 10,
       // Generate 100 widgets that display their index in the List.
       children: List.generate(
         _dataResult.length,
@@ -37,19 +39,21 @@ Container NowPlaying(BuildContext context, List<Results> _dataResult) {
                   arguments: _dataResult[index].id);
             },
             child: Container(
+              // width: 200,
               decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(12),
+                // shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(5),
                 image: DecorationImage(
                     image:
                         // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
-                        NetworkImage(Constant.uriImage500 + _dataResult[index].posterPath!),
+                        NetworkImage(Constant.uriImage500 +
+                            _dataResult[index].posterPath!),
                     fit: BoxFit.cover,
                     filterQuality: FilterQuality.medium,
                     scale: 1.0),
               ),
-              width: 250,
-              height: 600,
+              // width: 150,
+              // height: 200,
             ),
           );
         },

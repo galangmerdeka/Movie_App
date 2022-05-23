@@ -40,13 +40,14 @@ Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
           children: [
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              height: 500,
+              height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,
                 borderRadius: BorderRadius.circular(12),
                 image: DecorationImage(
-                  image: NetworkImage(Constant.uriImage500 + _data.posterPath!),
+                  image:
+                      NetworkImage(Constant.uriImage500 + _data.backdropPath!),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -64,11 +65,7 @@ Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
               // decoration: BoxDecoration(gradient: Gradient(colors: )),
               child: Text(
                 _data.title!,
-                style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
             SizedBox(
@@ -104,8 +101,8 @@ Scaffold MovieDetail(NowPlayingDetailResponse _data, List<Genres> _dataGenre,
                       ),
                       Text(
                         (resultPopularity >= 100)
-                            ? "10/10"
-                            : resultPopularity.toStringAsFixed(1) + "/10",
+                            ? "100/100"
+                            : resultPopularity.toStringAsFixed(1) + "/100",
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                     ],

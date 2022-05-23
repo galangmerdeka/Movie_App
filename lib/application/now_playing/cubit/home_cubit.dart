@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:movie_app/domain/home/now_playing_detail_response.dart';
 import 'package:movie_app/domain/home/now_playing_response.dart';
+import 'package:movie_app/domain/home/popular_response.dart';
 // import 'package:movie_app/domain/home/upcoming_response.dart';
 import 'package:movie_app/infrastructure/home/movie_repository.dart';
 
@@ -12,6 +13,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   final MovieRepository _movieRepository = MovieRepository();
   // final ResultData _upcomingRepository = ResultData();
+  // final PopularResponse _popularResponse = PopularRe
 
   void getMovieNowPlayingDetail(movie_id) async {
     emit(HomeLoading());
@@ -40,5 +42,16 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-
+  void getMoviePopular() async {
+    emit(HomeLoading());
+    try {
+      final _data = await _movieRepository.getListMoviePopular();
+      _data.fold(
+        (l) => emit(HomeUpcomingError(l)),
+        (r) => emit(HomePopular(r)),
+      );
+    } catch (e) {
+      emit(HomeUpcomingError(e.toString()));
+    }
+  }
 }
