@@ -2,8 +2,10 @@
 
 // import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart' as pdio;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 // import 'package:get/get.dart';
 import 'package:movie_app/application/now_playing/cubit/home_cubit.dart';
 import 'package:movie_app/application/upcoming/cubit/upcoming_cubit.dart';
@@ -29,43 +31,7 @@ class _HboMainPageState extends State<HboMainPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            CarouselSlider(
-              options: CarouselOptions(
-                height: 180.0,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayInterval: Duration(
-                  seconds: 5,
-                ),
-              ),
-              items: List.generate(
-                2,
-                (index) {
-                  return GestureDetector(
-                    onTap: () {
-                      // Get.toNamed(NowPlayingDetail.routName,
-                      //     arguments: _dataResult[index].id);
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        // shape: BoxShape.rectangle,
-                        borderRadius: BorderRadius.circular(5),
-                        image: DecorationImage(
-                            image:
-                                // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
-                                NetworkImage(Constant.uriImage500 +
-                                    "/neMZH82Stu91d3iqvLdNQfqPPyl.jpg"),
-                            fit: BoxFit.cover,
-                            filterQuality: FilterQuality.medium,
-                            scale: 1.0),
-                      ),
-                      // width: 250,
-                      // height: 600,
-                    ),
-                  );
-                },
-              ),
-            ),
+            SliderImageFromAPI(),
             SizedBox(
               height: 10,
             ),
@@ -148,6 +114,46 @@ class _HboMainPageState extends State<HboMainPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  CarouselSlider SliderImageFromAPI() {
+    return CarouselSlider(
+      options: CarouselOptions(
+        height: 180.0,
+        enlargeCenterPage: true,
+        autoPlay: true,
+        autoPlayInterval: Duration(
+          seconds: 5,
+        ),
+      ),
+      items: List.generate(
+        2,
+        (index) {
+          return GestureDetector(
+            onTap: () {
+              // Get.toNamed(NowPlayingDetail.routName,
+              //     arguments: _dataResult[index].id);
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                // shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(5),
+                image: DecorationImage(
+                    image:
+                        // CachedNetworkImage(imageUrl: uriImage+_dataResult[index].posterPath!, progressIndicatorBuilder: ,),
+                        NetworkImage(Constant.uriImage500 +
+                            "/neMZH82Stu91d3iqvLdNQfqPPyl.jpg"),
+                    fit: BoxFit.cover,
+                    filterQuality: FilterQuality.medium,
+                    scale: 1.0),
+              ),
+              // width: 250,
+              // height: 600,
+            ),
+          );
+        },
       ),
     );
   }
